@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'package:flutter/cupertino.dart';
 import 'package:funshop/Apis/suathongtin.dart';
 
 class blocSuaName{
@@ -12,9 +12,9 @@ String namegoc;
     this.namegoc=namegoc;
     Even.sink.add(name);
   }
-  Future<String> Eventsuaname(String name,String id) async {
+  Future<String> Eventsuaname(String name,String id,BuildContext context) async {
     String trangthai;
-    await Suathongtin().suathongtin(id, name).then((value){
+    await Suathongtin().suathongtin(id, name,context).then((value){
       trangthai=value;
     });
     return trangthai;

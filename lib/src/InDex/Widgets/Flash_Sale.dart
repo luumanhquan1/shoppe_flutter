@@ -128,7 +128,7 @@ return Padding(
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                        padding:  EdgeInsets.fromLTRB(0, ScreenUtil().setHeight(10), 0, 0),
                         child: Text('đ${'53.000'}',style: TextStyle(color: Colors.red,fontSize: ScreenUtil().setSp(22),fontWeight: FontWeight.bold),),
                       ),
                Padding(
@@ -154,7 +154,7 @@ return Padding(
                        ),
                      ),
                      Center(
-                       child:Text('ĐÃ BÁN ${0}',style: TextStyle(color: Colors.white),),
+                       child:Text('ĐÃ BÁN ${0}',style: TextStyle(color: Colors.white,fontSize: ScreenUtil().setSp(15)),),
                      )
 
                    ],

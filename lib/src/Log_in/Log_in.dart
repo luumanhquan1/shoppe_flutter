@@ -20,15 +20,25 @@ class _logInState extends State<logIn> {
   TextEditingController password = TextEditingController();
   final facebookLogin = FacebookLogin();
   bool pass = true;
+  bool kiemtra = true;
   Map userProfile;
   @override
   Widget build(BuildContext context) {
     return ProgressHUD(
-      indicatorWidget: Icon(Icons.warning_amber_sharp,color: Colors.white,size: ScreenUtil().setSp(35),),
+      indicatorWidget: kiemtra
+          ? null
+          : Icon(
+              Icons.warning_amber_sharp,
+              color: Colors.white,
+              size: ScreenUtil().setSp(35),
+            ),
       barrierEnabled: true,
-      textStyle: TextStyle(decoration: TextDecoration.none,color: Colors.white,fontSize: ScreenUtil().setSp(10)),
+      textStyle: TextStyle(
+          decoration: TextDecoration.none,
+          color: Colors.white,
+          fontSize: ScreenUtil().setSp(10)),
       child: Builder(
-        builder: (context)=>Scaffold(
+        builder: (context) => Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.white,
               leading: BackButton(
@@ -84,7 +94,8 @@ class _logInState extends State<logIn> {
                           hintText: 'Mật Khẩu',
                           hintStyle: TextStyle(color: Colors.teal),
                           prefixIcon: Container(
-                            child: Icon(Icons.lock, size: ScreenUtil().setSp(27)),
+                            child:
+                                Icon(Icons.lock, size: ScreenUtil().setSp(27)),
                           ),
                           suffixIcon: Container(
                             width: ScreenUtil().setWidth(120),
@@ -133,18 +144,21 @@ class _logInState extends State<logIn> {
                         width: double.infinity,
                         child: RaisedButton(
                           onPressed: () {
+                            final progress = ProgressHUD.of(context);
+                            progress.show();
                             Apidangnhap()
-                                .dangnhap(user.text, password.text,context)
+                                .dangnhap(user.text, password.text, context)
                                 .then((value) {
+                              kiemtra = false;
+                              setState(() {});
                               if (value.length == 0) {
-                                final progress=ProgressHUD.of(context);
-                                progress.showWithText('Invalid account or password');
-                                Future.delayed(Duration(seconds: 1),(){
+                                progress.showWithText(
+                                    'Invalid account or password');
+                                Future.delayed(Duration(seconds: 1), () {
                                   progress.dismiss();
                                 });
                               } else {
                                 Navigator.pop(context, value);
-                                setState(() {});
                               }
                             });
                           },
@@ -203,7 +217,8 @@ class _logInState extends State<logIn> {
                                   color: Colors.white,
                                   shape: BoxShape.rectangle,
                                   image: DecorationImage(
-                                      image: AssetImage('assets/img/google.png'),
+                                      image:
+                                          AssetImage('assets/img/google.png'),
                                       fit: BoxFit.fill)),
                             ),
                           ),
@@ -211,12 +226,12 @@ class _logInState extends State<logIn> {
                             width: ScreenUtil().setWidth(325),
                             child: Center(
                                 child: Text(
-                                  'Tiếp tục với Google',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w800,
-                                      fontSize: ScreenUtil().setSp(17)),
-                                )),
+                              'Tiếp tục với Google',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w800,
+                                  fontSize: ScreenUtil().setSp(17)),
+                            )),
                           )
                         ],
                       ),
@@ -245,8 +260,8 @@ class _logInState extends State<logIn> {
                                     color: Colors.transparent,
                                     shape: BoxShape.rectangle,
                                     image: DecorationImage(
-                                        image:
-                                        AssetImage('assets/img/facebook.png'),
+                                        image: AssetImage(
+                                            'assets/img/facebook.png'),
                                         fit: BoxFit.fill)),
                               ),
                             ),
@@ -254,12 +269,12 @@ class _logInState extends State<logIn> {
                               width: ScreenUtil().setWidth(325),
                               child: Center(
                                   child: Text(
-                                    'Tiếp tục với Facebook',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w800,
-                                        fontSize: ScreenUtil().setSp(17)),
-                                  )),
+                                'Tiếp tục với Facebook',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w800,
+                                    fontSize: ScreenUtil().setSp(17)),
+                              )),
                             )
                           ],
                         ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-Padding timKiemHangDau(BuildContext context,double height){
+import 'package:funshop/src/__mock__/ScreenUntil_add_Product.dart';
+
+Padding timKiemHangDau(BuildContext context, double height) {
   return Padding(
     padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
     child: Container(
@@ -21,10 +23,13 @@ Padding timKiemHangDau(BuildContext context,double height){
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Text('TÌM KIẾM HÀNG ĐẦU',style: TextStyle(
+                      Text(
+                        'TÌM KIẾM HÀNG ĐẦU',
+                        style: TextStyle(
                           color: Colors.red,
                           fontSize: ScreenUtil().setSp(22),
-                      ),),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -36,7 +41,10 @@ Padding timKiemHangDau(BuildContext context,double height){
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Text('Xem thêm'),
-                      Icon(Icons.arrow_forward_ios_sharp,size: ScreenUtil().setSp(10),)
+                      Icon(
+                        Icons.arrow_forward_ios_sharp,
+                        size: ScreenUtil().setSp(10),
+                      )
                     ],
                   ),
                 )
@@ -50,63 +58,88 @@ Padding timKiemHangDau(BuildContext context,double height){
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: 9,
-                itemBuilder: (context,index){
-                  return
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
-                      child: Container(
-                        width: ScreenUtil().setWidth(160),
-                        color: index==8?Colors.white:Colors.black12.withOpacity(0.1),
-                        child:index==8 ? Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                width: ScreenUtil().setWidth(50),
-                                height: ScreenUtil().setHeight(50),
-                                decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    border: Border.all(width: 2,color: Colors.red)
-                                ),
-                                child: Center(
-                                  child: Icon(Icons.arrow_forward_ios_sharp,color: Colors.red,),
-                                ),
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
+                    child: Container(
+                      width: ScreenUtil().setWidth(160),
+                      color: index == 8
+                          ? Colors.white
+                          : Colors.black12.withOpacity(0.1),
+                      child: index == 8
+                          ? Center(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    width: ScreenUtil().setWidth(50),
+                                    height: ScreenUtil().setHeight(50),
+                                    decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        border: Border.all(
+                                            width: 2, color: Colors.red)),
+                                    child: Center(
+                                      child: Icon(
+                                        Icons.arrow_forward_ios_sharp,
+                                        color: Colors.red,
+                                      ),
+                                    ),
+                                  ),
+                                  Text(
+                                    'Xem tất cả',
+                                    style: TextStyle(
+                                        color: Colors.red,
+                                        fontSize: ScreenUtil().setSp(15)),
+                                  )
+                                ],
                               ),
-                              Text('Xem tất cả',style: TextStyle(color: Colors.red,fontSize: ScreenUtil().setSp(15)),)
-                            ],
-                          ),
-                        ):
-                        Column(
-                          children: [
-                            Container(
-                              width: ScreenUtil().setWidth(165),
-                              height: ScreenUtil().setHeight(165),
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: NetworkImage('https://cf.shopee.vn/file/3b37cacd6e3e2bfce46df11a076c2948'),
-                                  fit: BoxFit.fill
-                                )
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
-                              child: Text('Túi đóng hàng223413',style: TextStyle(color: Colors.black,fontSize: ScreenUtil().setSp(15),),
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.fromLTRB(0, ScreenUtil().setHeight(45),  ScreenUtil().setWidth(75), 0),
-                              child: Text('Đã bán ${'24k+'}',style: TextStyle(fontSize: ScreenUtil().setSp(12)),),
                             )
-                          ],
-                        ),
-                      ),
-                    );
-                }
-            ),
+                          : Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  width: ScreenUtil().setWidth(165),
+                                  height: ScreenUtil().setHeight(165),
+                                  decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                          image: NetworkImage(
+                                              'https://cf.shopee.vn/file/3b37cacd6e3e2bfce46df11a076c2948'),
+                                          fit: BoxFit.fill)),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.fromLTRB(
+                                      Screenuntil().screenUiltWitdh10,
+                                      ScreenUtil().setHeight(8),
+                                      Screenuntil().screenUiltWitdh10,
+                                      0),
+                                  child: Text(
+                                    'Túi đóng hàng223413',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: ScreenUtil().setSp(15),
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Align(
+                                    alignment: Alignment.bottomLeft,
+                                      child: Padding(
+                                        padding: EdgeInsets.fromLTRB(ScreenUtil().setWidth(5), 0, 0, ScreenUtil().setHeight(5)),
+                                        child: Text(
+                                    'Đã bán ${'24k+'}',
+                                    style: TextStyle(
+                                          fontSize: ScreenUtil().setSp(12)),
+                                  ),
+                                      )),
+                                ),
+                              ],
+                            ),
+                    ),
+                  );
+                }),
           )
         ],
       ),
     ),
-
   );
 }

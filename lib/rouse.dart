@@ -6,6 +6,7 @@ import 'package:funshop/src/information_Page/%20start_To_Sell.dart';
 import 'package:funshop/src/information_Page/information_Customer.dart';
 import 'package:funshop/src/registration_Page/otp.dart';
 import 'package:funshop/src/registration_Page/registration.dart';
+import 'package:funshop/src/sectors_page/sectors_Page.dart';
 import 'package:funshop/src/thong_tin_sp/Thong_tin_Sp.dart';
 import 'package:funshop/common/constanis/RouseLists.dart';
 import 'package:funshop/src/registration_Page/information.dart';
@@ -21,7 +22,8 @@ class Routes {
       rouesList.thongtinCustommer: (context) => thongtinCustommer(),
       rouesList.information: (context) => information(),
       rouesList.startTosell: (context) => startTosell(),
-      rouesList.addproduct: (context) => addProduct()
+      rouesList.addproduct: (context) => addProduct(),
+      rouesList.sectors: (context) => sectorsPage()
     };
   }
 }

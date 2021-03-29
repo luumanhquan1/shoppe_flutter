@@ -8,7 +8,7 @@ class Apidangnhap{
   Future<List<information>> dangnhap(String username,String password,BuildContext context) async {
   try{
     List<dynamic> list;
-    String link='http://192.168.211.1:3000/dangnhap';
+    String link='http://192.168.0.2:3000/dangnhap';
     http.Response response = await http.post(link,body: {
       'username':username,
       'password':password
@@ -19,7 +19,7 @@ class Apidangnhap{
     list.forEach((element) {
       _listinfor.add(information.fromJson(element));
     });
-    return _listinfor;
+      return _listinfor;
   }
   catch(_){
     final prosenn=ProgressHUD.of(context);

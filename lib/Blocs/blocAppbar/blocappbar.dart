@@ -1,20 +1,20 @@
 import 'dart:async';
 
 class blocAppbar {
-  StreamController _controller = new StreamController();
-  Stream get controller => _controller.stream;
-  StreamController bateven = new StreamController();
+  StreamController controller1 = new StreamController.broadcast();
+  Stream get controller => controller1.stream;
+  StreamController bateven = new StreamController.broadcast();
   void event(String a) {
     bateven.sink.add('event');
   }
 
   blocAppbar() {
     bateven.stream.listen((event) {
-      _controller.sink.add('event');
+      controller1.sink.add('event');
     });
   }
   void disploy() {
-    _controller.close();
+    controller1.close();
     bateven.close();
   }
 }

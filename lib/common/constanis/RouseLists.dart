@@ -8,4 +8,5 @@ class rouesList{
   static const String information='/information';
   static const String startTosell='/startTosell';
   static const String addproduct='/addproduc';
+  static const String sectors='/sectors';
 }

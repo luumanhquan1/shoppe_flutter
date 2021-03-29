@@ -83,7 +83,6 @@ class _thongtinCustommerState extends State<thongtinCustommer> {
                                 0),
                             child: GestureDetector(
                               onTap: () {
-                                print('${bloc.name}');
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(

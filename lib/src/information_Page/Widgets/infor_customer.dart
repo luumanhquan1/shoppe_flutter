@@ -26,7 +26,7 @@ Container inforCustommerWidget(var resuilt,BuildContext context,BlocLogin blocLo
                    if (name[1] == 'done') {
                      prossen.showWithText('Cập nhật thành công');
                    } else {
-                     prossen.showWithText('Lỗi,bất định');
+                     prossen.showWithText('Lỗi,bất định thử lại sau');
                    }
                  }
                  Future.delayed(Duration(seconds: 1),(){
