@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/screen_util.dart';
 import 'package:funshop/Blocs/blocSectors/blocIndex.dart';
 import 'package:funshop/Blocs/blocSectors/bloc_Sectors.dart';
+import 'package:funshop/Blocs/bloccatogory.dart';
 import 'package:funshop/src/sectors_page/Widgets/tabbarView.dart';
 import 'package:funshop/src/sectors_page/Widgets/tabbarWiget.dart';
 
@@ -29,6 +30,7 @@ class _sectorsPageState extends State<sectorsPage>
 
   @override
   Widget build(BuildContext context) {
+    blocCatogoty bloccatogoty = ModalRoute.of(context).settings.arguments;
     return StreamBuilder<Object>(
         stream: bloc.controller,
         builder: (context, snapshot) {
@@ -37,6 +39,9 @@ class _sectorsPageState extends State<sectorsPage>
               vsync: this,
               initialIndex: controller.length - 1);
           controller.animateTo((controller.length - 1));
+          controller.addListener(() {
+            indexbloc.batEvent(controller.index);
+          });
           return Scaffold(
               appBar: AppBar(
                 backgroundColor: Colors.white,
@@ -68,6 +73,7 @@ class _sectorsPageState extends State<sectorsPage>
                     data: bloc.data,
                     kei: bloc.key,
                     blocindex: indexbloc,
+                    bloccatogoty: bloccatogoty,
                   ))
                 ],
               ));

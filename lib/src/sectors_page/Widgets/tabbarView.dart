@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:funshop/Blocs/blocSectors/blocIndex.dart';
 import 'package:funshop/Blocs/blocSectors/bloc_Sectors.dart';
+import 'package:funshop/Blocs/bloccatogory.dart';
 import 'package:funshop/Constains/sectorsConstains.dart';
+import 'package:funshop/src/addProduct/widgets/add_img.dart';
 import 'package:funshop/src/sectors_page/Widgets/dangmuc.dart';
 import 'package:funshop/src/sectors_page/Widgets/listView.dart';
 
@@ -11,6 +13,7 @@ class tabbarview extends StatelessWidget {
   blocSectors blocSec;
   var kei;
   var data;
+  blocCatogoty bloccatogoty;
   blocIndex blocindex;
   tabbarview(
       {Key key,
@@ -18,14 +21,14 @@ class tabbarview extends StatelessWidget {
       this.blocSec,
       this.data,
       this.kei,
-      this.blocindex})
+      this.blocindex,
+        this.bloccatogoty
+      }
+  )
       : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    controller.addListener(() {
-      blocindex.batEvent(controller.index);
-    });
-
     return TabBarView(
         controller: controller,
         children: List.generate(blocSec.list.length, (index) {

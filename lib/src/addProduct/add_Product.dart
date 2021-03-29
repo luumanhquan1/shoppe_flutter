@@ -1,9 +1,10 @@
 
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:funshop/Blocs/blocName_Product/blocNameProduct.dart';
+import 'package:funshop/Blocs/bloccatogory.dart';
 import 'package:funshop/Blocs/blocdesribe_Product/desbribleProductBloc.dart';
+import 'package:funshop/common/constanis/RouseLists.dart';
 import 'package:funshop/src/__mock__/ScreenUntil_add_Product.dart';
 import 'package:funshop/src/addProduct/widgets/Seclect_Product.dart';
 import 'package:funshop/src/addProduct/widgets/add_img.dart';
@@ -20,14 +21,21 @@ class addProduct extends StatefulWidget {
 class _addProductState extends State<addProduct> {
   blocnameProduc blocNameProduc=new blocnameProduc();
 blocDesbribleProduct blocDesbrible=new blocDesbribleProduct();
+blocCatogoty blocCatogory=new blocCatogoty();
   @override
   Widget build(BuildContext context) {
+    dynamic result=ModalRoute.of(context).settings.arguments;
     return Scaffold(
       backgroundColor: Colors.white12.withOpacity(0.8),
       appBar: AppBar(
         backgroundColor: Colors.white,
         leading: BackButton(
           color: Colors.red,
+onPressed: (){
+            Navigator.pop(context);
+            Navigator.pop(context);
+
+},
         ),
         centerTitle: true,
         title: Text('Thêm sản phẩm',style: TextStyle(color: Colors.black,fontSize: ScreenUtil().setSp(20)),),
@@ -63,7 +71,7 @@ blocDesbribleProduct blocDesbrible=new blocDesbribleProduct();
                   );
                 }
             ),
-            seclectProduct(),
+            seclectProduct(blocCatogory: blocCatogory,),
             SizedBox(
               height: ScreenUtil().setHeight(10),
             ),

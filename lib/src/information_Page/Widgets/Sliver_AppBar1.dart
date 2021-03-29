@@ -9,6 +9,7 @@ SliverAppBar appBar1(double witdh,dynamic data){
   return SliverAppBar(
     expandedHeight: ScreenUtil().setHeight(90),
     backgroundColor: Colors.red,
+    leading: SizedBox(),
     flexibleSpace:  Container(
       height: ScreenUtil().setHeight(200),
       width: witdh,
